@@ -12,7 +12,7 @@ const path=require('path');
 
 const stripe=require('stripe')('sk_test_51NazuHSE32Zw7bNTn3KS3QBgTtCGvLhhtvuGGjshpGKNW3cOUjMcGrdOMYEGa05SB58ksEGeDlJnsvATEvyZ4MJ800RX5qf29x')
 
-const ITEM_COUNT=6;
+const ITEM_COUNT=8;
 
 // const Cart=require('../Models/cart')
 
