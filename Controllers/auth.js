@@ -11,11 +11,11 @@ const { validationResult } = require('express-validator');
 //adding configuration to node mailer
 
 const transport=nodemailer.createTransport({
-    host: 'smtp.elasticemail.com',
-    port: 2525,
+    host: 'smtp-relay.sendinblue.com',
+    port: 587,
     auth: {
-        user: 'muralidarreddycchada@gmail.com',
-        pass: '65B29D1AE497B76F1CC72329F7E973F5B4A2'
+        user: 'muralidarreddychada@gmail.com',
+        pass: 'WpBfVMCxvSA58Hqk'
     }
 })
 
