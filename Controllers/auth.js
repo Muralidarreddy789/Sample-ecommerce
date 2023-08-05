@@ -11,11 +11,11 @@ const { validationResult } = require('express-validator');
 //adding configuration to node mailer
 
 const transport=nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
+    host: 'smtp.elasticemail.com/',
+    port: 2525,
     auth: {
-        user: 'lavern7@ethereal.email',
-        pass: 'bJrsnf6v5sSEYxYPF4'
+        user: 'muralidarreddycchada@gmail.com',
+        pass: '65B29D1AE497B76F1CC72329F7E973F5B4A2'
     }
 })
 
