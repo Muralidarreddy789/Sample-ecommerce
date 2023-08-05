@@ -1,0 +1,23 @@
+extends ../layouts/main-layout.pug
+block style
+    link(rel="stylesheet", href="/css/product.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="css/main.css")
+block content
+    //- form to add product and to edit product
+    main
+        if errorMessage.length>0 
+            div(class="user-message user-message--error") #{errorMessage}
+        form.product-form(action="/login",method="POST")
+            .form-control
+                label(for="email") Email-id 
+                input(type="email",name="email",id="email")
+
+            .form-control
+                label(for="password") Password
+                input(type="password",name="password",id="imageurl")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            button(type="submit") Login
+            div.centered
+                a(href="/reset-password") Reset password 
+

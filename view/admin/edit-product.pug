@@ -1,0 +1,30 @@
+extends ../layouts/main-layout.pug
+block style
+    link(rel="stylesheet", href="/css/product.css")
+    link(rel="stylesheet", href="/css/forms.css")
+block content
+    //- form to add product and to edit product
+    main
+        if errorMessage.length>0 
+            div(class="user-message user-message--error") #{errorMessage}
+        form.product-form(action="/admin/"+(editing?"edit-product/"+product._id:"add-product"),method="POST",enctype="multipart/form-data")
+            .form-control
+                label(for="title") Title 
+                input(type="text",name="title",id="title",value=((editing||error)?product.title:''))
+
+            .form-control
+                label(for="image") Image
+                //- input(type="text",name="imageurl",id="imageurl",value=((editing||error)?product.imageurl:''))
+                input(type="file",name="image",id="image")
+
+            .form-control
+                label(for="description") Description 
+                textarea(type="text",name="description",id="description",rows="5")=((editing||error)?product.description:'')
+           
+
+            .form-control
+                label(for="price") Price 
+                input(type="text",name="price",id="price",value=((editing||error)?product.price:''))
+                input(type="hidden" name="_csrf" value=csrfToken)
+            button(type="submit")= editing?"Upadate product":"submit"
+

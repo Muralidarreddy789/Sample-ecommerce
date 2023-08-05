@@ -1,0 +1,27 @@
+extends ../layouts/main-layout.pug
+block style
+    link(rel="stylesheet", href="/css/cart.css")
+block content
+    if Products.length > 0
+        ul(class="cart__item-list")
+            each product in Products
+                li(class="cart__item")
+                    h1 #{product.prodId.title}
+                    h2 Quantity: #{product.quantity}
+        div.center
+            h2 #{totalPrice}
+        div.center
+            button(id="order-btn" class="btn") ORDER
+            script(src="https://js.stripe.com/v3/")
+            script.
+                var stripe = Stripe('pk_test_51NazuHSE32Zw7bNT5dFdDcGwyPfznMn0aHn04ONcicXPfFyZduTGv05oafU5TnsJd2wLge3i6blEpx4eIlLIZur300exrWjv2j');
+                var order = document.getElementById('order-btn');
+                order.addEventListener('click', () => {
+                    stripe.redirectToCheckout({
+                        sessionId: "#{sessionId}"
+                    }).then(function (result) {
+                        if (result.error) {
+                            console.error(result.error.message);
+                        }
+                    });
+                })

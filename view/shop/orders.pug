@@ -1,0 +1,16 @@
+extends ../layouts/main-layout.pug
+block style 
+    link(rel="stylesheet", href="/css/orders.css")
+block content 
+    if(orderslength<=0)
+        h1 Nothing Here 
+    else 
+        each order in orders
+            ul(class="orders")
+                li(class="orders__item")
+                    h1 order#--#{order._id}
+                ul(class="orders__products")
+                    each product in order.product
+                        li(class="orders__products-item") #{product.product.title} (#{product.quantity})
+                            a(href="/invoice/"+order._id) invoice 
+

@@ -1,0 +1,30 @@
+extends ../layouts/main-layout.pug
+block style
+    link(rel="stylesheet", href="/css/product.css")
+block content
+    main
+        if prods.length > 0
+            .grid
+                each product in prods
+                    article.card.product-item
+                        header.card__header
+                            h1.product__title #{product.title}
+                        div.card__image
+                            img(src='/'+product.imageurl,alt=product.title)
+                        div.card__content
+                            h2.product__price $#{product.price}
+                            p.product__description #{product.description}
+                        if(isAuthenicated)
+                            .card__actions
+                                form(action="/cart" method="POST")
+                                    button.btn Add-To Cart
+                                    input(type="hidden" name="_csrf" value=csrfToken)
+                                    input(type="hidden",name="productId",value=product._id)
+            section(class="pagination")
+                if previousPage
+                    a(href="/?page="+previous) #{previous}
+                a(href="/?page="+current class="active") #{current}
+                if nextPage
+                    a(href="/?page="+next) #{next} 
+        else
+            h1 No Products

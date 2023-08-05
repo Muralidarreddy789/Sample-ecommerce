@@ -1,0 +1,23 @@
+extends ../layouts/main-layout.pug
+block style 
+    link(rel="stylesheet", href="/css/cart.css")
+block content
+    if Products.length > 0
+            ul(class="cart__item-list")
+                each product in Products
+                    li(class="cart__item")
+                        h1 #{product.prodId.title}
+                        h2 Quantity: #{product.quantity}
+                        form(action="/delete-item-cart" method="POST")
+                            input(type="hidden" name="_csrf" value=csrfToken)
+                            input(type="hidden" value=product.prodId._id name="id")
+                            button(type="submit" class="btn danger") delete
+            hr
+            div(class="center")
+                //- form(action="/create-order" method="POST")
+                //-     input(type="hidden" name="_csrf" value=csrfToken)
+                //-     button(type="submit" class="btn") Order Now!
+                a.btn(href="/checkout") Order Now
+
+    else 
+        h1 Your Cart Is Empty
