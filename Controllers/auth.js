@@ -11,7 +11,7 @@ const { validationResult } = require('express-validator');
 //adding configuration to node mailer
 
 const transport=nodemailer.createTransport({
-    host: 'smtp.elasticemail.com/',
+    host: 'smtp.elasticemail.com',
     port: 2525,
     auth: {
         user: 'muralidarreddycchada@gmail.com',
