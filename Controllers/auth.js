@@ -106,7 +106,7 @@ exports.getSignup=(req,res,next)=>{
                     subject:'rest Password',
                     html:`
                         <p>your account has been created succesfully<p>
-                        <p>Click this <a href="http://localhost:3000/reset-password/${token}">link</a> to set a new Password</p>
+                        <p>Click this <a href="https://muralidarreddy789-sample-ecommerce.onrender.com/reset-password/${token}">link</a> to set a new Password</p>
                     `
                  });
             })
